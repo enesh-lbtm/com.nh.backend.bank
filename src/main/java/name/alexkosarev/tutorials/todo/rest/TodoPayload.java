@@ -6,6 +6,5 @@ import lombok.Data;
 public final class TodoPayload {
 
     private boolean done;
-
     private String task;
 }
