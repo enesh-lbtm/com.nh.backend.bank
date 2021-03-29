@@ -1,4 +1,4 @@
-package name.alexkosarev.tutorials.todo.rest;
+package com.nh.backend.bank.controller;
 
 import lombok.Data;
 
@@ -7,4 +7,6 @@ public final class TodoPayload {
 
     private boolean done;
     private String task;
+
+
 }
