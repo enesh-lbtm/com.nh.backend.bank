@@ -9,13 +9,56 @@
 			"name": "account",
 			"item": [
 				{
+					"name": "read all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/account/read",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"account",
+								"read"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "read",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/account/read/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"account",
+								"read",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "",
+							"raw": "{\n    \"usersId\": 1,\n    \"title\": \"yeee\",\n    \"type\": \"debit\",\n    \"toIncrease\": \"upwards\",\n    \"description\": \"upwards\",\n    \"debit\": 50.0,\n    \"credit\": 60.0,\n    \"balance\": 110.0\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -39,23 +82,31 @@
 					"response": []
 				},
 				{
-					"name": "create",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": ""
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "update",
 					"request": {
-						"method": "GET",
+						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 2,\n    \"usersId\": 1,\n    \"title\": \"test\",\n    \"type\": \"debit\",\n    \"toIncrease\": \"upwards\",\n    \"description\": \"upwards\",\n    \"debit\": 50.0,\n    \"credit\": 60.0,\n    \"balance\": 110.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": ""
+							"raw": "http://localhost:8080/api/account/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"account",
+								"update"
+							]
 						}
 					},
 					"response": []
@@ -63,10 +114,21 @@
 				{
 					"name": "delete",
 					"request": {
-						"method": "GET",
+						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "http://localhost:8080/api/account/delete/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"account",
+								"delete",
+								"3"
+							]
 						}
 					},
 					"response": []
