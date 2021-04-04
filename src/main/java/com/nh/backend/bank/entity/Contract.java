@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class Contract {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "users_id")

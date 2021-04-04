@@ -5,23 +5,27 @@ import com.nh.backend.bank.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AddressService  {
 
     @Autowired
     private AddressRepository repository;
 
-    public void read(Long id) {
+    public Address read(Long id) {
+        Optional<Address> address = repository.findById(id);
+        return address.orElse(null);
 
     }
-    public void create(Address address) {
-
+    public Address create(Address address) {
+        return repository.save(address);
     }
-    public void update(Address address) {
-
+    public Address update(Address address) {
+        return repository.save(address);
     }
     public void delete(Long id) {
-
+        repository.deleteById(id);
     }
 
 }

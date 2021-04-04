@@ -6,6 +6,8 @@ import com.nh.backend.bank.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class TransactionService   {
 
@@ -14,17 +16,18 @@ public class TransactionService   {
 
 
 
-    public void read(Long id) {
-
+    public Transaction read(Long id) {
+        Optional<Transaction> transaction = repository.findById(id);
+        return transaction.orElse(null);
     }
-    public void create(Transaction transaction) {
-
+    public Transaction create(Transaction transaction) {
+        return  repository.save(transaction);
     }
-    public void update(Transaction transaction ) {
-
+    public Transaction update(Transaction transaction ) {
+        return repository.save(transaction);
     }
     public void delete(Long id) {
-
+        repository.deleteById(id);
     }
 
 }

@@ -20,5 +20,4 @@ public class UserService {
     public Users register(Users users) {
         return repository.save(users);
     }
-
 }

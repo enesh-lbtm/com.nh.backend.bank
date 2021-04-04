@@ -6,25 +6,25 @@ import com.nh.backend.bank.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AccountService {
 
     @Autowired
     private AccountRepository repository;
 
-    //public void login(Account account) {
-    //не уверена что это нужно
-    //}
-    public void read(Long login) {
-
+    public Account read(Long id) {
+        Optional<Account> account = repository.findById(id);
+        return account.orElse(null);
     }
-    public void create(Account account) {
-
+    public Account create(Account account) {
+        return repository.save(account);
     }
-    public void update(Account account) {
-
+    public Account update(Account account) {
+        return repository.save(account);
     }
-    public void delete(Long login) {
-
+    public void delete(Long id) {
+        repository.deleteById(id);
     }
 }

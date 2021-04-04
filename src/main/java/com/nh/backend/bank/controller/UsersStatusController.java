@@ -21,6 +21,7 @@ public final class UsersStatusController {
 
     @GetMapping("usersStatus")
     public ResponseEntity<UsersStatus> create(@RequestBody UsersStatus usersStatus) {
+        service.create(usersStatus);
         return new ResponseEntity(HttpStatus.OK);
     }
 }

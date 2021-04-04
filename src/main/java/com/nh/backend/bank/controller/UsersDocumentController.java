@@ -2,26 +2,42 @@ package com.nh.backend.bank.controller;
 
 
 import com.nh.backend.bank.entity.Users;
+import com.nh.backend.bank.entity.UsersDocument;
 import com.nh.backend.bank.service.UsersDocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/")
+@RequestMapping("api/usersDocument/")
 public final class UsersDocumentController {
 
     @Autowired
     private UsersDocumentService service;
 
-    @GetMapping("usersDocument")
-    public ResponseEntity<String> id(@RequestBody Users users) {
-        return ResponseEntity.ok("hello nh");
+    @PostMapping("create")
+    public ResponseEntity<UsersDocument> create(@RequestBody UsersDocument usersDocument) {
+        UsersDocument res= service.create(usersDocument);
+        return new ResponseEntity<>(res, HttpStatus.OK);
+
+    }
+    @GetMapping("read/{id:.+}")
+    public ResponseEntity<UsersDocument> read(@PathVariable("id") Long id){
+        UsersDocument res = service.read(id);
+        return new ResponseEntity<>(res, HttpStatus.OK);
+    }
+    @PutMapping("update")
+    public ResponseEntity<UsersDocument> update(@RequestBody UsersDocument usersDocument){
+        UsersDocument res = service.update(usersDocument);
+        return new ResponseEntity<>(res, HttpStatus.OK);
+    }
+    @DeleteMapping("delete/{id:.+}")
+    public ResponseEntity<Void> delete(@PathVariable("id") Long id){
+        service.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
 

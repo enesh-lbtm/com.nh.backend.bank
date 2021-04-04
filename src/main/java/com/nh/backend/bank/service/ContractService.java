@@ -6,6 +6,8 @@ import com.nh.backend.bank.repository.ContractRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 
 @Service
 public class ContractService   {
@@ -15,16 +17,20 @@ public class ContractService   {
 
 
 
-    public void read(Long id) {
+    public Contract read(Long id) {
+        Optional<Contract> contract = repository.findById(id);
+        return contract.orElse(null);
+    }
+    public Contract create(Contract contract) {
+        return repository.save(contract);
 
     }
-    public void create(Contract contract) {
-
-    }
-    public void update(Contract contract) {
+    public Contract update(Contract contract) {
+        return repository.save(contract);
 
     }
     public void delete(Long id) {
+        repository.deleteById(id);
 
     }
 
