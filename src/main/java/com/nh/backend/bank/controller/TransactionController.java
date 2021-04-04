@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/transaction/")
 public final class TransactionController {
@@ -20,6 +22,12 @@ public final class TransactionController {
         Transaction res = service.create(transaction);
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
+    @GetMapping("read")
+    public ResponseEntity<List<Transaction>> read() {
+        List<Transaction> res = service.readAll();
+        return new ResponseEntity<>(res, HttpStatus.OK);
+    }
+
     @GetMapping("read/{id:.+}")
     public ResponseEntity<Transaction> read(@PathVariable("id") Long id){
         Transaction res = service.read(id);

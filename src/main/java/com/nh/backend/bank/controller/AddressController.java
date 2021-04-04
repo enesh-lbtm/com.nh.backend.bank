@@ -2,12 +2,15 @@ package com.nh.backend.bank.controller;
 
 
 
+import com.nh.backend.bank.entity.Account;
 import com.nh.backend.bank.entity.Address;
 import com.nh.backend.bank.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/address/")
@@ -21,6 +24,12 @@ public final class AddressController {
         Address res = service.create(address);
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
+    @GetMapping("read")
+    public ResponseEntity<List<Address>> read(){
+        List<Address> res = service.readAll();
+        return  new ResponseEntity<>(res, HttpStatus.OK);
+    }
+
     @GetMapping("read/{id:.+}")
     public ResponseEntity<Address> read(@PathVariable("id") Long id){
         Address res = service.read(id);

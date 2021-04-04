@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/userContract/")
 public final class UsersContactController  {
@@ -23,6 +25,11 @@ public final class UsersContactController  {
         UsersContact res = service.create(usersContact);
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
+    @GetMapping("read")
+    public ResponseEntity<List<UsersContact>> read() {
+        List<UsersContact> res =service.readAll();
+        return  new ResponseEntity<>(res, HttpStatus.OK);
+}
 
     @GetMapping("read/{id:.+}")
     public ResponseEntity<UsersContact> create(@PathVariable("id") Long id) {

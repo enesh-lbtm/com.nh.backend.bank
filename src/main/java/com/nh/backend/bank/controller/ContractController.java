@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/contract/")
 public final class ContractController {
@@ -20,6 +22,12 @@ public final class ContractController {
         Contract res = service.create(contract);
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
+    @GetMapping("read")
+    public ResponseEntity<List<Contract>> read() {
+        List<Contract> res = service.readAll();
+        return new ResponseEntity<>(res, HttpStatus.OK);
+    }
+
     @GetMapping("read/{id:.+}")
     public ResponseEntity<Contract> read(@PathVariable("id") Long id){
         Contract res = service.read(id);

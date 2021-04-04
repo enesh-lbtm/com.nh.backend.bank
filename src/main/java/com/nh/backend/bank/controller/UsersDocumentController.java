@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/usersDocument/")
 public final class UsersDocumentController {
@@ -24,6 +26,12 @@ public final class UsersDocumentController {
         return new ResponseEntity<>(res, HttpStatus.OK);
 
     }
+    @GetMapping("read")
+    public  ResponseEntity<List<UsersDocument>> read(){
+        List<UsersDocument> res = service.readAll();
+        return  new ResponseEntity<>(res, HttpStatus.OK);
+    }
+
     @GetMapping("read/{id:.+}")
     public ResponseEntity<UsersDocument> read(@PathVariable("id") Long id){
         UsersDocument res = service.read(id);
