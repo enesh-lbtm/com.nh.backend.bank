@@ -8,23 +8,30 @@ VALUES ( 1,'yeee', 'debit', 'upwards', 'upwards', 50, 60,  110);
 
 
 INSERT INTO address(
-    country, town, street, building_number, floor)
-VALUES ('Belarus','Misk', 'l.bedy 2b', '2', '11');
+    country, town, street, buildingNumber, floor)
+VALUES ('Turkmenistan','Kerki', 'B-aly', 3, 20);
 
-/*/
-    @Column(name = "country")
-    private String country;
+INSERT INTO contract(
+    usersId, type, constantly, currency, startDate, endDate, amount, interest, notes
+)
+VALUES(2, 'debet', 'yes', 'USD', '25.08.2018','30.06.2022', 3000,5000, 'null');
 
-    @Column(name = "town")
-    private String town;
+INSERT INTO transaction(
+    accountId, clientId, type, tranDate, debit, amount
+)
+VALUES(11, 2,'kredit','23.06.2000', false, 0);
 
-    @Column(name = "street")
-    private String street;
+INSERT INTO usersContract(
+    telMob, telHome, email
+)
+VALUES ("+375339110124","80044421162","eburyeva@gmail.com");
 
-    @Column(name = "building_number")
-    private Long buildingNumber;
 
-    @Column(name = "floor")
-    private Long floor;
+INSERT INTO usersdocument(
+    nationality, birthPlace, livingCountry,type,documentNumber, documentSerial, issuedBy, issueDate, identNumber,familyStatus
+)
+VALUES('turkmen', 'kerki', 'Minsk', 'famele', '100092A', '112334','mvd Turkmenistan', '17.08.2016', '1230','unmarrid');
 
- */
+INSERT INTO usersstatus( disability, retiree, monthlyIncome)
+VALUES('not','not', 250);
+

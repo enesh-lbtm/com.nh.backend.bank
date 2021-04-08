@@ -112,7 +112,7 @@ CREATE TABLE address
 
 CREATE TABLE users_document
 (
-    "id"            bigint      NOT NULL,
+    "id"            bigserial   NOT NULL,
     nationality     varchar(50) NOT NULL,
     birth_place     varchar(50) NOT NULL,
     living_country  varchar(50) NOT NULL,
