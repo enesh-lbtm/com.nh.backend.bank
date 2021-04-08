@@ -10,6 +10,10 @@ public class UsersStatus {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "users_id")
+    private Long usersId;
+
+
     @Column(name = "disability")
     private String disability;
 
@@ -25,6 +29,13 @@ public class UsersStatus {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getUsersId(){
+        return this.usersId;
+    }
+    public void setUsersId(Long usersId){
+        this.usersId=usersId;
     }
 
     public String getDisability() {

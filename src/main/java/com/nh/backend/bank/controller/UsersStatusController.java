@@ -22,7 +22,7 @@ public final class UsersStatusController {
     @PostMapping("create")
     public ResponseEntity<UsersStatus> create(@RequestBody UsersStatus usersStatus) {
        UsersStatus res = service.create(usersStatus);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity(res, HttpStatus.OK);
     }
     @GetMapping("read")
     public ResponseEntity<List<UsersStatus>> read(){

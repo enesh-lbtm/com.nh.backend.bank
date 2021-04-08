@@ -91,23 +91,25 @@ CREATE TABLE users_contact
 CREATE TABLE users_status
 (
     "id"           bigserial   NOT NULL,
+    "users_id"     bigint NOT NULL,
     disability     varchar(50) NOT NULL,
     retiree        boolean     NOT NULL,
     monthly_income decimal     NOT NULL,
     CONSTRAINT PK_users_status PRIMARY KEY ("id"),
-    CONSTRAINT FK_80 FOREIGN KEY ("id") REFERENCES users ("id")
+    CONSTRAINT FK_80 FOREIGN KEY ("users_id") REFERENCES users ("id")
 );
 
 CREATE TABLE address
 (
     "id"            bigserial   NOT NULL,
+    "users_id"   bigint NOT NULL,
     country         varchar(50) NOT NULL,
     town            varchar(50) NOT NULL,
     street          varchar(50) NOT NULL,
     building_number int         NOT NULL,
     "floor"         int         NOT NULL,
     CONSTRAINT PK_address PRIMARY KEY ("id"),
-    CONSTRAINT FK_832 FOREIGN KEY ("id") REFERENCES users ("id")
+    CONSTRAINT FK_832 FOREIGN KEY ("users_id") REFERENCES users ("id")
 );
 
 CREATE TABLE users_document
